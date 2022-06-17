@@ -9,7 +9,7 @@
 
 #include "led_manage.h"
 #include "user_flash.h"
-
+#include "ble_adv.h"
 
 
 /***********************************************
@@ -43,11 +43,9 @@ void Platform_driver_init(void)
 	system_timer_init();	
 	watchdog_init(30000);
 	led_init();
-	
+	adv_timer_config();
 	read_user_flash();
 }
-
-
 /*********************************/
 void Power_manager(void)
 {

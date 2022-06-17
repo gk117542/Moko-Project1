@@ -11,11 +11,12 @@
 #include "beacon2_adv.h"
 #include "nrf_delay.h"
 #include "key.h"
+#include "app_timer.h"
 
 static  uint8_t m_adv_data[31]={0};
 static  uint8_t adv_data_len;
 extern STU_HIS StuHis;
-
+bool adv_send_start = true;
 
 /*******************************************************************/         
 uint8_t key_code[2] = /**< Information advertised by the Beacon. */
@@ -62,6 +63,7 @@ static void iBeacon_adv(void)
 	memcpy(&beacon_infor,StuHis.Beacon_uuid,16);
 	memcpy(&beacon_infor[16],StuHis.Beacon_major,2);
 	memcpy(&beacon_infor[18],&StuHis.Beacon_minor,1);
+	memcpy(&beacon_infor[20],&StuHis.Beacon_rssi,1);
 	
  	memcpy(m_adv_data+adv_data_len,beacon_infor,sizeof(beacon_infor));
 	  adv_data_len+=sizeof(beacon_infor);
@@ -141,10 +143,9 @@ static void adv_params_config(void)
 
     adv_params.p_peer_addr = NULL; 
     adv_params.fp          = BLE_GAP_ADV_FP_ANY;
-
-    adv_params.interval    = MSEC_TO_UNITS(StuHis.adv_interval, UNIT_0_625_MS);//BLE_GAP_ADV_INTERVAL_MIN
+	adv_params.interval    = BLE_GAP_ADV_INTERVAL_MAX;
+    //adv_params.interval  = MSEC_TO_UNITS(StuHis.adv_interval, UNIT_0_625_MS);//BLE_GAP_ADV_INTERVAL_MIN
     adv_params.timeout     =  0;
-
 }
 
 /*********************************************
@@ -157,10 +158,10 @@ void ble_adv_stop(void)
 	
 	if(err_code!=NRF_SUCCESS)
 	{
-	    BLE_RTT("[ble_adv_stop]===>err=%d\r\n",err_code);
+	    //BLE_RTT("[ble_adv_stop]===>err=%d\r\n",err_code);
 	}
 //    APP_ERROR_CHECK(err_code);
-	BLE_RTT("=======BLE ADV stop=======\r\n");
+	//BLE_RTT("=======BLE ADV stop=======\r\n");
 
 }
 
@@ -182,7 +183,7 @@ static void ble_adv_start(void)
 		BLE_RTT("[ble_adv_start]  err=0x%x\r\n",err_code);
 		APP_ERROR_CHECK(err_code);	
 	}
-	BLE_RTT("=======BLE ADV start=======\r\n");
+	//BLE_RTT("=======BLE ADV start=======\r\n");
 }
 
 
@@ -198,23 +199,71 @@ void set_ble_start(void)
 
 void task_ble_adv_start(void)
 {
-	
-	if(is_ble_connect()==true)    return;
-	
-	if(ble_start_flg==0)   return;
-       ble_start_flg=0;
+	if(is_ble_connect()==true)
+		return;
+    if(ble_start_flg==0)
+		return;
+	ble_start_flg=0;
 	ble_adv_stop();
     ble_adv_start();
 }
 
+APP_TIMER_DEF(g_adv_update_timer);
+static void g_adv_update_timeout(void * p_context)
+{
+	adv_send_start = true;
+}
+
+void start_adv_timer(uint32_t msecond)
+{
+	adv_send_start = false;
+	app_timer_start(g_adv_update_timer,APP_TIMER_TICKS(msecond),NULL);
+}
+
+void adv_update_timer_init(void)
+{
+    ret_code_t err_code;
+
+    err_code = app_timer_create(&g_adv_update_timer,
+                                APP_TIMER_MODE_SINGLE_SHOT,
+                                g_adv_update_timeout);
+    APP_ERROR_CHECK(err_code);
+}
+
+void adv_timer_config(void)
+{
+	adv_update_timer_init();
+	app_timer_start(g_adv_update_timer,APP_TIMER_TICKS(100),NULL);
+}
+
 void task_adv_update(void)
 {
-	if(get_device_sta()){
-		g_Beacon1_adv();
-		nrf_delay_ms(100);
-		g_Beacon2_adv();
+	static uint8_t adv_state = 0;
+	
+	if(is_ble_connect()) return;
+	ble_adv_stop();
+	if(!adv_send_start) return ;
+
+	switch(adv_state)
+	{
+		case 0x00://Send first advertising packet
+			g_Beacon1_adv();
+			start_adv_timer(100);
+			BLE_RTT("adv send first packet ---\r\n");
+			adv_state = 0x01;
+		break;
+		case 0x01://Send second advertising packet
+			g_Beacon2_adv();
+			BLE_RTT("adv send second packet ---\r\n");
+			start_adv_timer(StuHis.adv_interval*1000);
+			adv_state = 0x00;
+		break;
+		default:break;
 	}
+	ble_adv_start();
 }
+
+
 
 
 

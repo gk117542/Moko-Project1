@@ -82,7 +82,7 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt)//, void * p_context)
             break;
         case BLE_GAP_EVT_DISCONNECTED:
 			
-		    set_ble_start();
+		    //set_ble_start();
             m_conn_handle = BLE_CONN_HANDLE_INVALID;
             break;
 		

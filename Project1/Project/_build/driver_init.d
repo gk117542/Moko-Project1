@@ -48,3 +48,4 @@
 .\_build\driver_init.o: ..\components\softdevice\s112\headers\ble_ranges.h
 .\_build\driver_init.o: ..\components\softdevice\s112\headers\ble_types.h
 .\_build\driver_init.o: ..\components\softdevice\s112\headers\ble_err.h
+.\_build\driver_init.o: ..\moko_src\ble\ble_adv.h

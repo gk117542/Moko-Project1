@@ -47,3 +47,4 @@
 .\_build\system_time.o: ..\components\softdevice\s112\headers\nrf_error_soc.h
 .\_build\system_time.o: ..\components\softdevice\s112\headers\nrf_nvic.h
 .\_build\system_time.o: ..\moko_src\ble\beacon1_adv.h
+.\_build\system_time.o: ..\moko_src\user_flash.h

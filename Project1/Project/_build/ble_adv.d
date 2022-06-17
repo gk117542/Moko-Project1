@@ -55,3 +55,4 @@
 .\_build\ble_adv.o: ..\components\drivers_nrf\hal\nrf_peripherals.h
 .\_build\ble_adv.o: D:\keil_523\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.15.0\Device\Include\nrf52810_peripherals.h
 .\_build\ble_adv.o: D:\keil_523\ARM\ARMCC\Bin\..\include\stdlib.h
+.\_build\ble_adv.o: ..\components\libraries\timer\app_timer.h

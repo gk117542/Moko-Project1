@@ -51,7 +51,7 @@ void check_key_press(void)
 		key_press_flg=0;
 	}	
 }
-
+#if 0
 /*********************************************
 *stop_adv_mode
 ***********************************************/
@@ -65,16 +65,16 @@ static void stop_adv_mode(void)
       ble_adv_stop();	
 }
 
-
+#endif
 /*******************************************
 *@function: device_OnOff_manage
 *
 ****************************/
 void device_OnOff_manage(void)
 {
-	static uint8_t sta=0;
+	//static uint8_t sta=0;
 	check_key_press();
-	
+	#if 0
 	stop_adv_mode();
 	
 	if(short_press_flg==0)  return;	
@@ -104,5 +104,6 @@ void device_OnOff_manage(void)
 		default:
 			break;
 	}
+	#endif
 }
 

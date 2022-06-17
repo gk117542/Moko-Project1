@@ -9,6 +9,10 @@
 #include "ble_comm.h"
 #include "driver_init.h"
 #include "beacon1_adv.h"
+#include "user_flash.h"
+
+extern bool adv_send_start;
+extern STU_HIS StuHis;
 
 /********************************************************************/ // variable variable define 
 // timer 
@@ -56,11 +60,13 @@ void system_timer_stop(void)
 ************************************/
 
 void task_system_timer(void)
-{	
+{	static uint32_t systim = 0;
+	systim++;
 	if(system_timer_flg==0) return;	
 	   system_timer_flg =0;
+	   BLE_RTT("systime [%d]\r\n",systim);
 	task_ble_tx_power();
-	task_ble_adv_start();
+	//task_ble_adv_start();
 	Sterilize_handle();
 	device_OnOff_manage();
 }  

@@ -95,7 +95,7 @@ void set_ble_mac(uint8_t* p_data)
 	err_code = sd_ble_gap_addr_set(&m_device_addr);
 	BLE_RTT("[set_ble_mac] err_code=%x\r\n",err_code);
 	
-	set_ble_start();
+	//set_ble_start();
 }
 
 
@@ -114,6 +114,7 @@ void task_ble_tx_power(void)
 		temp_txPower = StuHis.tx_Power;
 		err_code = sd_ble_gap_tx_power_set(StuHis.tx_Power);
 		APP_ERROR_CHECK(err_code);
+		BLE_RTT("----TxPower error code [%d]\r\n",err_code);
 	}	
 }
 

@@ -16,7 +16,7 @@ static void user_data_init(void)
 	
 	StuHis.Beacon_rssi  =-59;
 	StuHis.tx_Power     = 0;
-	StuHis.adv_interval  =20;
+	StuHis.adv_interval  =10;
 
 	memcpy(StuHis.device_name,"Azuga GK",strlen("Azuga GK"));
 	StuHis.device_name_len+=strlen("Azuga GK");
