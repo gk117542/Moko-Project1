@@ -3408,18 +3408,18 @@
       </Doc>
       <Doc>
         <Name>.\main.c</Name>
-        <ColumnNumber>22</ColumnNumber>
+        <ColumnNumber>0</ColumnNumber>
         <TopLine>31</TopLine>
-        <CurrentLine>49</CurrentLine>
+        <CurrentLine>50</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>..\components\softdevice\s112\headers\nrf_error.h</Name>
-        <ColumnNumber>95</ColumnNumber>
+        <ColumnNumber>9</ColumnNumber>
         <TopLine>54</TopLine>
-        <CurrentLine>62</CurrentLine>
+        <CurrentLine>60</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
