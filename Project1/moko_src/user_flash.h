@@ -10,7 +10,7 @@
 
 
 
-#define HIS_HEAD 0xe4
+#define HIS_HEAD 0xee//0xe4
 #define FACTORY_SET_HEAD (0xaaaaaa00+HIS_HEAD)
 
 

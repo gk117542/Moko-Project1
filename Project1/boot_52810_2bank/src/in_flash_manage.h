@@ -29,7 +29,7 @@ start		    end		    size		left		item
 0			    	96k		96k			96k		softdevice
 96k			    160k		64k			32k		application
 160k  			164k        4k			28k   hisdata
-164k  			168k        4k			24k   res_sn±£ÁôÊ¹ÓÃ
+164k  			168k        4k			24k   res_snï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
 168k			180k	    16k			16k  	left
 
 
@@ -71,9 +71,9 @@ start		    end		    size		left		item
 #pragma pack(1)
 typedef struct
 {
-uint8_t m_active_slot;//²»ÐèÒªÊµÊ±±£´æ
+uint8_t m_active_slot;//ï¿½ï¿½ï¿½ï¿½ÒªÊµÊ±ï¿½ï¿½ï¿½ï¿½
 uint8_t m_lock_state;
-uint8_t adv_interval;/*100msµÄ±¶Êý*/
+uint8_t adv_interval;/*100msï¿½Ä±ï¿½ï¿½ï¿½*/
 int8_t tx_power;
 uint8_t connect_able;/* 00-->unconnectable 01--->connectable*/
 } STU_HIS;

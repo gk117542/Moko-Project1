@@ -65,6 +65,7 @@ void read_user_flash(void)
     {
         len_real=sizeof(STU_HIS);		
 		Beacon_uuid_initialize = false;
+        BLE_RTT("Read value from flash \r\n");
         BLE_RTT("len_real=%d,buf_sizeof=%d\r\n",len_real,sizeof(read_flash_buf));
 
 		// 2：get flash data len
@@ -97,7 +98,7 @@ void read_user_flash(void)
 	else
 	{
 RESET_HIS:
-	    user_data_init();	
+	    user_data_init();
 		save_user_flash();
 	}
 }
@@ -114,7 +115,7 @@ void write_user_flash(uint8_t set_mode)
 
     uint16_t len_real,i,total_len;
     uint8_t dataxor;
-
+    BLE_RTT("FLASH UPDATE\r\n");
 	memset(flash_write_buf,0,sizeof(flash_write_buf));
 	
     pdata=(uint8_t*)flash_write_buf; //  buff

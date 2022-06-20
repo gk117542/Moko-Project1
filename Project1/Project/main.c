@@ -36,7 +36,7 @@ int main(void)
 	//dc-dc enable----
 	sd_power_dcdc_mode_set(NRF_POWER_DCDC_ENABLE);
 	Cycletimers_increase();
-	BLE_RTT("device start.........\r\n");
+	BLE_RTT("device start.........test update\r\n");
     for (;;)
     {
         Power_manager();
@@ -50,12 +50,4 @@ int main(void)
 		Feed_WacthDog();
     }
 }
-
-
-
-
-
-
-
-
 

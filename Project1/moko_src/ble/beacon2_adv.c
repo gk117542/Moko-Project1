@@ -2,7 +2,7 @@
 #include "battery_check.h"
 #include "ble_adv.h"
 #include "user_flash.h"
-
+#include "driver_init.h"
 void Cycletimers_increase(void)
 {
 	StuHis.Cycle ++;

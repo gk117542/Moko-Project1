@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "driver_init.h": "c",
+        "system_time.h": "c"
+    }
+}

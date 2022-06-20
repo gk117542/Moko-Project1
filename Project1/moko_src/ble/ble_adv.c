@@ -148,6 +148,7 @@ static void adv_params_config(void)
     adv_params.timeout     =  0;
 }
 
+static bool start_adv_flg = false;
 /*********************************************
 *  ble_adv_stop
 ***********************/
@@ -155,7 +156,7 @@ void ble_adv_stop(void)
 {
 	uint32_t    err_code;
 	err_code = sd_ble_gap_adv_stop();
-	
+	start_adv_flg = false;
 	if(err_code!=NRF_SUCCESS)
 	{
 	    //BLE_RTT("[ble_adv_stop]===>err=%d\r\n",err_code);
@@ -164,7 +165,6 @@ void ble_adv_stop(void)
 	//BLE_RTT("=======BLE ADV stop=======\r\n");
 
 }
-
 
 /*********************************************
 *  ble_adv_start
@@ -183,7 +183,8 @@ static void ble_adv_start(void)
 		BLE_RTT("[ble_adv_start]  err=0x%x\r\n",err_code);
 		APP_ERROR_CHECK(err_code);	
 	}
-	BLE_RTT("=======BLE ADV start=======\r\n");
+	start_adv_flg = true;
+	//BLE_RTT("=======BLE ADV start=======\r\n");
 }
 
 
@@ -247,18 +248,20 @@ void task_adv_update(void)
 		case 0x00://Send first advertising packet
 			g_Beacon1_adv();
 			start_adv_timer(100);
-			BLE_RTT("adv send first packet ---\r\n");
+			//BLE_RTT("adv send first packet ---\r\n");
 			adv_state = 0x01;
 		break;
 		case 0x01://Send second advertising packet
 			g_Beacon2_adv();
-			BLE_RTT("adv send second packet ---\r\n");
+			//BLE_RTT("adv send second packet ---\r\n");
 			start_adv_timer(StuHis.adv_interval*1000);
 			adv_state = 0x00;
 		break;
 		default:break;
 	}
+	
 	ble_adv_start();
+	task_ble_tx_power();
 }
 
 

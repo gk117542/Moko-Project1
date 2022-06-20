@@ -73,7 +73,7 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt)//, void * p_context)
 {
     uint32_t err_code;
 	
-	BLE_RTT("ble_evt_handler ID:0x%x\r\n",p_ble_evt->header.evt_id);
+	//BLE_RTT("ble_evt_handler ID:0x%x\r\n",p_ble_evt->header.evt_id);
 	
     switch (p_ble_evt->header.evt_id)
     {

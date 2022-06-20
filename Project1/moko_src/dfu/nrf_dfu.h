@@ -15,7 +15,7 @@
 
 
 
-//#define DFU_PRINTF
+#define DFU_PRINTF
 #ifdef DFU_PRINTF
 #define DFU_RTT(...) 	SEGGER_RTT_printf(0,__VA_ARGS__);
 #else
