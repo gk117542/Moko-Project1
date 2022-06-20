@@ -183,7 +183,7 @@ static void ble_adv_start(void)
 		BLE_RTT("[ble_adv_start]  err=0x%x\r\n",err_code);
 		APP_ERROR_CHECK(err_code);	
 	}
-	//BLE_RTT("=======BLE ADV start=======\r\n");
+	BLE_RTT("=======BLE ADV start=======\r\n");
 }
 
 
@@ -239,11 +239,9 @@ void adv_timer_config(void)
 void task_adv_update(void)
 {
 	static uint8_t adv_state = 0;
-	
 	if(is_ble_connect()) return;
-	ble_adv_stop();
 	if(!adv_send_start) return ;
-
+	ble_adv_stop();
 	switch(adv_state)
 	{
 		case 0x00://Send first advertising packet
@@ -262,9 +260,5 @@ void task_adv_update(void)
 	}
 	ble_adv_start();
 }
-
-
-
-
 
 

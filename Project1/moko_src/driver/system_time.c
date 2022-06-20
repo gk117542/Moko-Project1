@@ -24,7 +24,6 @@ static void system_timer_Hand(void * p_context)
 {
 	UNUSED_PARAMETER(p_context);
     system_timer_flg = 1;
-	
 }
 
 void system_timer_init(void)
@@ -43,7 +42,7 @@ void system_timer_init(void)
 void system_timer_start(void)
 {
 	ret_code_t err_code;
-    err_code = app_timer_start(system_timer_id,  APP_TIMER_TICKS(1000) , NULL);
+    err_code = app_timer_start(system_timer_id,APP_TIMER_TICKS(1000) , NULL);
     APP_ERROR_CHECK(err_code);
 }
 
@@ -58,12 +57,11 @@ void system_timer_stop(void)
 *system timer 1s
 *
 ************************************/
-
 void task_system_timer(void)
 {	static uint32_t systim = 0;
-	systim++;
 	if(system_timer_flg==0) return;	
 	   system_timer_flg =0;
+		systim++;
 	   BLE_RTT("systime [%d]\r\n",systim);
 	task_ble_tx_power();
 	//task_ble_adv_start();

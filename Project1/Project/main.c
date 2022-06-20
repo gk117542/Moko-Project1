@@ -40,7 +40,7 @@ int main(void)
     for (;;)
     {
         Power_manager();
-		led_timer_manage();
+		//led_timer_manage();
 		task_read_battery();
 		//down dfu file 
 	    task_dfu_upfile();	
