@@ -58,11 +58,14 @@ void system_timer_stop(void)
 *
 ************************************/
 void task_system_timer(void)
-{	//static uint32_t systim = 0;
+{	
 	if(system_timer_flg==0) return;	
 	   system_timer_flg =0;
-		//systim++;
-	   //BLE_RTT("systime [%d]\r\n",systim);
+#ifdef DBUG_TEMP
+	static uint32_t systim = 0;
+	systim++;
+	BLE_RTT("systime [%d]\r\n",systim);
+#endif
 	task_ble_tx_power();
 	//task_ble_adv_start();
 	Sterilize_handle();

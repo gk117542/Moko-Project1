@@ -232,9 +232,18 @@ void ble_commd_analyze(uint8_t *p_data,uint8_t len)
 			{
 				if(0x01==dataslen)
 				{
-					buf[0]=0xaa;
-					memcpy(&StuHis.Cycle, &p_data[4], 0x01);
-					nus_send_cmd(rwflg,cmd,buf,1);
+					if(p_data[4]<64)
+					{
+						buf[0]=0xaa;
+						memcpy(&StuHis.Cycle, &p_data[4], 0x01);
+						save_user_flash();
+						nus_send_cmd(rwflg,cmd,buf,1);
+					}
+					else
+					{
+						buf[0]=0x00;
+						nus_send_cmd(rwflg,cmd,buf,1);
+					}
 				}
 				else
 				{

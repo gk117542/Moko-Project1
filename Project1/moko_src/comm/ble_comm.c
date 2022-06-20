@@ -98,8 +98,6 @@ void set_ble_mac(uint8_t* p_data)
 	//set_ble_start();
 }
 
-
-
 /*********************************************************
 *function:  task_device_tx_power
 *description: set ble tx power
@@ -114,7 +112,7 @@ void task_ble_tx_power(void)
 		temp_txPower = StuHis.tx_Power;
 		err_code = sd_ble_gap_tx_power_set(StuHis.tx_Power);
 		BLE_RTT("----TxPower error code [%d],TxPower is [%d]\r\n",err_code,temp_txPower);
-		APP_ERROR_CHECK(err_code);
+		APP_ERROR_CHECK(err_code);	
 	}	
 }
 

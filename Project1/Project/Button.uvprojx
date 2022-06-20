@@ -420,11 +420,6 @@
               <FilePath>..\moko_src\comm\ble_comm.c</FilePath>
             </File>
             <File>
-              <FileName>dfu.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\moko_src\dfu\dfu.lib</FilePath>
-            </File>
-            <File>
               <FileName>beacon1_adv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\moko_src\ble\beacon1_adv.c</FilePath>
@@ -852,6 +847,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>DFU</GroupName>
+          <Files>
+            <File>
+              <FileName>ble_dfu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\moko_src\dfu\ble_dfu.c</FilePath>
+            </File>
+            <File>
+              <FileName>fifo_bytes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\moko_src\dfu\fifo_bytes.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrf_dfu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\moko_src\dfu\nrf_dfu.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>
@@ -1273,11 +1288,6 @@
               <FilePath>..\moko_src\comm\ble_comm.c</FilePath>
             </File>
             <File>
-              <FileName>dfu.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\moko_src\dfu\dfu.lib</FilePath>
-            </File>
-            <File>
               <FileName>beacon1_adv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\moko_src\ble\beacon1_adv.c</FilePath>
@@ -1551,6 +1561,26 @@
               <FileName>SEGGER_RTT_printf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\components\segger_rtt\SEGGER_RTT_printf.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>DFU</GroupName>
+          <Files>
+            <File>
+              <FileName>ble_dfu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\moko_src\dfu\ble_dfu.c</FilePath>
+            </File>
+            <File>
+              <FileName>fifo_bytes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\moko_src\dfu\fifo_bytes.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrf_dfu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\moko_src\dfu\nrf_dfu.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "driver_init.h": "c",
-        "system_time.h": "c"
+        "system_time.h": "c",
+        "segger_rtt.h": "c",
+        "ble_adv.h": "c"
     }
 }

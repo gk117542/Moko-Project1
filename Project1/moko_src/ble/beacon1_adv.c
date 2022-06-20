@@ -28,7 +28,6 @@ void Sterilize_handle(void)
 {	
 	uint32_t Hours;
 	Sterilize_counter++;
-	//Sterilize_counter+=60;
 	Hours = Sterilize_counter/3600;
 	if(Hours>=4272)
 	{

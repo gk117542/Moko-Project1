@@ -12,7 +12,7 @@
 
 uint8_t SOFTH_VERSION=1;
 uint8_t SOFTL_VERSION=0;
-uint8_t TEST_VERSION=0;
+uint8_t TEST_VERSION=1;
 
 /**************************************************
 * @function: assert_nrf_callback err 
@@ -36,7 +36,7 @@ int main(void)
 	//dc-dc enable----
 	sd_power_dcdc_mode_set(NRF_POWER_DCDC_ENABLE);
 	Cycletimers_increase();
-	BLE_RTT("device start.........test update\r\n");
+	BLE_RTT("device start.........\r\n");
     for (;;)
     {
         Power_manager();

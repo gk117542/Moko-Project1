@@ -4,7 +4,7 @@
 
 
 #define  TEST_BOARD_PIN 2
-
+#define DBUG_TEMP
 
 #include "SEGGER_RTT.h"
 
